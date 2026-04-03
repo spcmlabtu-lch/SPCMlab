@@ -260,6 +260,7 @@
         }
         .leader-photo__frame i { font-size: 3rem; }
         .leader-photo__frame span { font-size: 0.8rem; font-weight: 500; }
+        .leader-photo__frame img { width: 100%; height: 100%; object-fit: cover; }
         .leader-photo__accent {
             position: absolute; bottom: -12px; right: -12px;
             width: 100px; height: 100px; border-radius: 50%;
@@ -310,6 +311,7 @@
             display: grid; place-items: center; overflow: hidden;
         }
         .tcard__avatar i { font-size: 1.6rem; color: var(--warm-300); }
+        .tcard__avatar img { width: 100%; height: 100%; object-fit: cover; }
         .tcard__name { font-family: var(--font-display); font-size: 1.02rem; font-weight: 600; margin-bottom: 0.2rem; }
         .tcard__role { font-size: 0.78rem; color: var(--warm-400); font-weight: 500; }
         .tcard__email { display: inline-block; margin-top: 0.65rem; font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-light); opacity: 0.7; transition: opacity 0.2s; }
@@ -328,15 +330,11 @@
             transition: all 0.35s; cursor: default;
         }
         .pub-item:hover { background: var(--white); border-color: var(--accent-pale); box-shadow: var(--shadow-md); transform: translateX(6px); }
+        .pub-item--link { cursor: pointer; }
         .pub-num { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--accent-light); opacity: 0.4; min-width: 36px; line-height: 1; padding-top: 2px; }
         .pub-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem; color: var(--ink); }
         .pub-meta { font-size: 0.82rem; color: var(--warm-400); }
         .pub-journal { color: var(--accent-mid); font-weight: 600; font-style: italic; }
-        .pub-placeholder {
-            border: 1.5px dashed var(--warm-200); border-radius: var(--radius-md);
-            padding: 2.5rem; text-align: center; color: var(--warm-400); font-size: 0.88rem; margin-top: 1rem;
-        }
-        .pub-placeholder i { display: block; font-size: 1.5rem; margin-bottom: 0.6rem; color: var(--warm-300); }
 
         /* CONTACT */
         .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 3rem; }
@@ -388,7 +386,12 @@
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ═══════════════════════════════════════════════════════════════
+     LOAD DATA — This loads your content from data.js
+     ═══════════════════════════════════════════════════════════════ -->
+<script src="data.js"></script>
+
+<!-- NAV (static — no need to change) -->
 <nav class="nav" id="mainNav">
     <div class="nav__bar">
         <a href="#home" class="nav__brand">
@@ -412,20 +415,9 @@
     </div>
 </nav>
 
-<!-- NEWS TICKER -->
+<!-- NEWS TICKER — auto-generated from data.js -->
 <div class="news-marquee" style="margin-top: 72px;">
-    <div class="news-marquee__track">
-        <span class="news-marquee__item"><i class="fas fa-circle"></i> [News placeholder — e.g., New paper accepted in Physical Review B]</span>
-        <span class="news-marquee__item"><i class="fas fa-circle"></i> [News placeholder — e.g., PhD Scholar awarded fellowship]</span>
-        <span class="news-marquee__item"><i class="fas fa-circle"></i> [News placeholder — e.g., Group presented at international conference]</span>
-        <span class="news-marquee__item"><i class="fas fa-circle"></i> [News placeholder — e.g., New M.Sc. students joined the lab]</span>
-        <span class="news-marquee__item"><i class="fas fa-circle"></i> [News placeholder — e.g., Collaborative project launched]</span>
-        <span class="news-marquee__item"><i class="fas fa-circle"></i> [News placeholder — e.g., New paper accepted in Physical Review B]</span>
-        <span class="news-marquee__item"><i class="fas fa-circle"></i> [News placeholder — e.g., PhD Scholar awarded fellowship]</span>
-        <span class="news-marquee__item"><i class="fas fa-circle"></i> [News placeholder — e.g., Group presented at international conference]</span>
-        <span class="news-marquee__item"><i class="fas fa-circle"></i> [News placeholder — e.g., New M.Sc. students joined the lab]</span>
-        <span class="news-marquee__item"><i class="fas fa-circle"></i> [News placeholder — e.g., Collaborative project launched]</span>
-    </div>
+    <div class="news-marquee__track" id="newsTrack"></div>
 </div>
 
 <!-- ═══ HOME LAYER ═══ -->
@@ -444,20 +436,8 @@
                     <a href="#research" class="btn btn--primary"><i class="fas fa-flask"></i> Our Research</a>
                     <a href="#team" class="btn btn--outline"><i class="fas fa-users"></i> Meet the Team</a>
                 </div>
-                <div class="hero__stats-bar">
-                    <div class="hero__stat">
-                        <div class="hero__stat-val" data-count="3">0</div>
-                        <div class="hero__stat-lbl">Research Areas</div>
-                    </div>
-                    <div class="hero__stat">
-                        <div class="hero__stat-val" data-count="2">0</div>
-                        <div class="hero__stat-lbl">PhD Scholars</div>
-                    </div>
-                    <div class="hero__stat">
-                        <div class="hero__stat-val" data-count="3">0</div>
-                        <div class="hero__stat-lbl">M.Sc. Students</div>
-                    </div>
-                </div>
+                <!-- Stats auto-generated from data.js -->
+                <div class="hero__stats-bar" id="heroStats"></div>
                 <div class="hero__univ-bar">
                     <div class="hero__univ-badge"><i class="fas fa-university"></i> Tezpur University (Central University)</div>
                     <div class="hero__univ-badge"><i class="fas fa-map-marker-alt"></i> Assam, India</div>
@@ -472,7 +452,7 @@
     </div>
 </section>
 
-<!-- ═══ RESEARCH LAYER ═══ -->
+<!-- ═══ RESEARCH LAYER — auto-generated from data.js ═══ -->
 <section class="layer layer--research" id="research">
     <div class="layer__inner">
         <div class="anim">
@@ -480,89 +460,22 @@
             <h2 class="sec-title">Pillars of <em>Inquiry</em></h2>
             <p class="sec-desc">Our group investigates three distinct sets of problems in condensed matter physics centering on quenched disorder.</p>
         </div>
-        <div class="research-split stagger">
-            <div class="rcard anim">
-                <div class="rcard__icon rcard__icon--blue"><i class="fas fa-magnet"></i></div>
-                <h3 class="rcard__title">Hysteresis: Random-Field Ising Model</h3>
-                <p class="rcard__text">
-                    The critical response of complex systems to a smoothly varying force applies to a broad category of interesting nonequilibrium effects in disordered physical systems — earthquakes, avalanche, Barkhausen noise in magnetic materials. We study hysteresis as a paradigm of nonequilibrium phenomena and the zero-temperature random-field Ising model (RFIM) to understand critical behaviour in systems with quenched disorder.
-                </p>
-                <div class="rcard__keywords">
-                    <span class="rcard__kw">RFIM</span>
-                    <span class="rcard__kw">Barkhausen Noise</span>
-                    <span class="rcard__kw">Avalanche</span>
-                    <span class="rcard__kw">Nonequilibrium</span>
-                </div>
-            </div>
-            <div class="rcard anim">
-                <div class="rcard__icon rcard__icon--teal"><i class="fas fa-wave-square"></i></div>
-                <h3 class="rcard__title">Disordered Quantum System: Two Interacting Particles</h3>
-                <p class="rcard__text">
-                    The manifestation of disorder and interaction in quantum systems has been a hot topic in recent years. We study the well known single particle Anderson localization problem extended to two interacting particles (TIP) in the presence of quasiperiodic and box-width disorder distribution, in spatial dimensions 1 and 2. Experimental advances in photonics and ultra-cold atoms make it feasible to probe such phenomena.
-                </p>
-                <div class="rcard__keywords">
-                    <span class="rcard__kw">Anderson Localization</span>
-                    <span class="rcard__kw">TIP</span>
-                    <span class="rcard__kw">Quasiperiodic</span>
-                    <span class="rcard__kw">Ultra-cold Atoms</span>
-                </div>
-            </div>
-            <div class="rcard anim">
-                <div class="rcard__icon rcard__icon--blue"><i class="fas fa-magnet"></i></div>
-                <h3 class="rcard__title">Random Bond Ising Model</h3>
-                <p class="rcard__text">
-                    We are studying the hysterisis and avalanche behaviour in the random bond Ising model (RBIM) in Random Graphs. The RBIM is a close cousin of the RFIM, where the disorder is in the coupling strength between spins rather than in the local fields. We are interested in understanding how the nature of disorder affects critical behaviour and universality in disordered systems.
-                </p>
-                <div class="rcard__keywords">
-                    <span class="rcard__kw">RBIM</span>
-                    <span class="rcard__kw">Random Graph</span>
-                    <span class="rcard__kw">Avalanche</span>
-                    <span class="rcard__kw">Nonequilibrium</span>
-                </div>
-            </div>
-        </div>
+        <div class="research-split stagger" id="researchCards"></div>
     </div>
 </section>
 
-<!-- ═══ GROUP LEADER LAYER ═══ -->
+<!-- ═══ GROUP LEADER LAYER — auto-generated from data.js ═══ -->
 <section class="layer layer--leader" id="leader">
     <div class="layer__inner">
         <div class="anim">
             <div class="sec-tag">Group Leader</div>
             <h2 class="sec-title">Principal <em>Investigator</em></h2>
         </div>
-        <div class="leader-layout">
-            <div class="leader-photo anim anim--left" style="position:relative;">
-                <div class="leader-photo__frame">
-                    <i class="fas fa-user"></i>
-                    <span>Photo placeholder</span>
-                </div>
-                <div class="leader-photo__accent"></div>
-            </div>
-            <div class="anim anim--right">
-                <div class="leader-info__name">Dr. Diana Thongjaomayum</div>
-                <div class="leader-info__title">Assistant Professor / Group Leader</div>
-                <div class="leader-info__aff">Department of Physics, Tezpur University, Assam, India</div>
-                <p class="leader-info__bio">
-                    Dr. Diana Thongjaomayum leads the Statistical Physics and Condensed Matter Laboratory at Tezpur University. Her research explores the effect of quenched disorder in condensed matter physics, working on problems spanning hysteresis in strongly disordered ferromagnets and electron localization in disordered quantum systems.
-                </p>
-                <div class="leader-info__placeholder">
-                    <i class="fas fa-pen" style="margin-right: 0.4rem;"></i>
-                    Detailed biography, educational background, research experience, awards and recognitions, teaching interests — to be added here.
-                </div>
-                <div class="leader-links">
-                    <a href="#" class="leader-link" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                    <a href="#" class="leader-link" title="ORCID"><i class="fab fa-orcid"></i></a>
-                    <a href="#" class="leader-link" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-                    <a href="#" class="leader-link" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="#" class="leader-link" title="University Profile"><i class="fas fa-university"></i></a>
-                </div>
-            </div>
-        </div>
+        <div class="leader-layout" id="leaderContent"></div>
     </div>
 </section>
 
-<!-- ═══ TEAM LAYER ═══ -->
+<!-- ═══ TEAM LAYER — auto-generated from data.js ═══ -->
 <section class="layer layer--team" id="team">
     <div class="layer__inner">
         <div class="anim">
@@ -570,57 +483,11 @@
             <h2 class="sec-title">Group <em>Members</em></h2>
             <p class="sec-desc">The researchers and students driving our investigations forward.</p>
         </div>
-        <div class="team-section anim">
-            <div class="team-row-label"><i class="fas fa-circle"></i> PhD Scholars</div>
-            <div class="team-grid stagger">
-                <div class="tcard anim">
-                    <div class="tcard__avatar"><i class="fas fa-user"></i></div>
-                    <div class="tcard__name">[PhD Scholar 1]</div>
-                    <div class="tcard__role">PhD Student</div>
-                    <a href="#" class="tcard__email">email@tezu.ac.in</a>
-                </div>
-                <div class="tcard anim">
-                    <div class="tcard__avatar"><i class="fas fa-user"></i></div>
-                    <div class="tcard__name">[PhD Scholar 2]</div>
-                    <div class="tcard__role">PhD Student</div>
-                    <a href="#" class="tcard__email">email@tezu.ac.in</a>
-                </div>
-            </div>
-        </div>
-        <div class="team-section anim">
-            <div class="team-row-label"><i class="fas fa-circle"></i> M.Sc. Project Students</div>
-            <div class="team-grid stagger">
-                <div class="tcard anim">
-                    <div class="tcard__avatar"><i class="fas fa-user"></i></div>
-                    <div class="tcard__name">[M.Sc. Student 1]</div>
-                    <div class="tcard__role">M.Sc. Project Student</div>
-                    <a href="#" class="tcard__email">email@tezu.ac.in</a>
-                </div>
-                <div class="tcard anim">
-                    <div class="tcard__avatar"><i class="fas fa-user"></i></div>
-                    <div class="tcard__name">[M.Sc. Student 2]</div>
-                    <div class="tcard__role">M.Sc. Project Student</div>
-                    <a href="#" class="tcard__email">email@tezu.ac.in</a>
-                </div>
-                <div class="tcard anim">
-                    <div class="tcard__avatar"><i class="fas fa-user"></i></div>
-                    <div class="tcard__name">[M.Sc. Student 3]</div>
-                    <div class="tcard__role">M.Sc. Project Student</div>
-                    <a href="#" class="tcard__email">email@tezu.ac.in</a>
-                </div>
-            </div>
-        </div>
-        <div class="team-section anim">
-            <div class="team-row-label"><i class="fas fa-circle"></i> Alumni</div>
-            <div class="team-placeholder">
-                <i class="fas fa-user-friends"></i>
-                Alumni information will be added here
-            </div>
-        </div>
+        <div id="teamSections"></div>
     </div>
 </section>
 
-<!-- ═══ PUBLICATIONS LAYER ═══ -->
+<!-- ═══ PUBLICATIONS LAYER — auto-generated from data.js ═══ -->
 <section class="layer layer--publications" id="publications">
     <div class="layer__inner">
         <div class="anim">
@@ -628,97 +495,18 @@
             <h2 class="sec-title">Selected <em>Publications</em></h2>
             <p class="sec-desc">Key papers from our group. Complete list to be updated.</p>
         </div>
-        <div class="pub-list stagger">
-            <div class="pub-item anim">
-                <div class="pub-num">01</div>
-                <div>
-                    <div class="pub-title">[Publication title placeholder]</div>
-                    <div class="pub-meta">[Authors] — <span class="pub-journal">[Journal Name]</span>, [Year]</div>
-                </div>
-            </div>
-            <div class="pub-item anim">
-                <div class="pub-num">02</div>
-                <div>
-                    <div class="pub-title">[Publication title placeholder]</div>
-                    <div class="pub-meta">[Authors] — <span class="pub-journal">[Journal Name]</span>, [Year]</div>
-                </div>
-            </div>
-            <div class="pub-item anim">
-                <div class="pub-num">03</div>
-                <div>
-                    <div class="pub-title">[Publication title placeholder]</div>
-                    <div class="pub-meta">[Authors] — <span class="pub-journal">[Journal Name]</span>, [Year]</div>
-                </div>
-            </div>
-            <div class="pub-item anim">
-                <div class="pub-num">04</div>
-                <div>
-                    <div class="pub-title">[Publication title placeholder]</div>
-                    <div class="pub-meta">[Authors] — <span class="pub-journal">[Journal Name]</span>, [Year]</div>
-                </div>
-            </div>
-            <div class="pub-item anim">
-                <div class="pub-num">05</div>
-                <div>
-                    <div class="pub-title">[Publication title placeholder]</div>
-                    <div class="pub-meta">[Authors] — <span class="pub-journal">[Journal Name]</span>, [Year]</div>
-                </div>
-            </div>
-        </div>
-        <div class="pub-placeholder anim">
-            <i class="fas fa-file-lines"></i>
-            More publications will be added here
-        </div>
+        <div class="pub-list stagger" id="pubList"></div>
     </div>
 </section>
 
-<!-- ═══ CONTACT LAYER ═══ -->
+<!-- ═══ CONTACT LAYER — auto-generated from data.js ═══ -->
 <section class="layer layer--contact" id="contact">
     <div class="layer__inner">
         <div class="anim">
             <div class="sec-tag">Get in Touch</div>
             <h2 class="sec-title">Contact <em>Us</em></h2>
         </div>
-        <div class="contact-split">
-            <div class="contact-block anim anim--left">
-                <div class="c-row">
-                    <div class="c-row__icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div>
-                        <div class="c-row__label">Address</div>
-                        <div class="c-row__value">
-                            Statistical Physics &amp; Condensed Matter Laboratory<br>
-                            Department of Physics, Tezpur University<br>
-                            Napaam, Sonitpur, Assam — 784028, India
-                        </div>
-                    </div>
-                </div>
-                <div class="c-row">
-                    <div class="c-row__icon"><i class="fas fa-envelope"></i></div>
-                    <div>
-                        <div class="c-row__label">Email</div>
-                        <div class="c-row__value"><a href="#">[email]@tezu.ernet.in</a></div>
-                    </div>
-                </div>
-                <div class="c-row">
-                    <div class="c-row__icon"><i class="fas fa-phone"></i></div>
-                    <div>
-                        <div class="c-row__label">Phone</div>
-                        <div class="c-row__value">[Phone number placeholder]</div>
-                    </div>
-                </div>
-                <div class="c-row">
-                    <div class="c-row__icon"><i class="fas fa-globe"></i></div>
-                    <div>
-                        <div class="c-row__label">University</div>
-                        <div class="c-row__value"><a href="https://www.tezu.ernet.in" target="_blank">www.tezu.ernet.in</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="contact-map-wrap anim anim--right">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3564.4278916820012!2d92.82996671120434!3d26.698773976678513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3744ebb8b23fffff%3A0x245e8f9dd26023af!2sDepartment%20of%20Physics!5e0!3m2!1sen!2sin!4v1775183037220!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                
-            </div>
-        </div>
+        <div class="contact-split" id="contactContent"></div>
     </div>
 </section>
 
@@ -726,27 +514,261 @@
 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__text">&copy; 2026 SPCM Lab — <a href="https://www.tezu.ernet.in" target="_blank">Department of Physics, Tezpur University</a></div>
-        
+
         <div style="margin-left: 20px;margin-top:-10px">
         Visitors Count
         <a href='http://www.freevisitorcounters.com'>http://freevisitorcounters.com</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=5687e6d3f49cb2177e5494916e1e8323321bc946'></script>
         <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1529387/t/9"></script>
         </div>
 
-        <div class="footer__links">
-            <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-            <a href="#" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
-        </div>
+        <div class="footer__links" id="footerLinks"></div>
     </div>
 </footer>
 
-<!-- SCRIPTS -->
+<!-- ═══════════════════════════════════════════════════════════════════════
+     ENGINE — Reads data.js and builds the page. DO NOT EDIT BELOW.
+     ═══════════════════════════════════════════════════════════════════════ -->
 <script>
 (function() {
     'use strict';
 
-    // Nav scroll + active link
+    // ── Helper: escape HTML special characters ──
+    function esc(str) {
+        const d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+    }
+
+    // ══════════════════════════════════════════════
+    // BUILD: News Ticker
+    // ══════════════════════════════════════════════
+    (function buildNews() {
+        const track = document.getElementById('newsTrack');
+        if (!track || typeof NEWS === 'undefined') return;
+        // Build items twice for seamless infinite scroll
+        const items = NEWS.map(n =>
+            `<span class="news-marquee__item"><i class="fas fa-circle"></i> ${esc(n)}</span>`
+        ).join('');
+        track.innerHTML = items + items;
+    })();
+
+    // ══════════════════════════════════════════════
+    // BUILD: Hero Stats
+    // ══════════════════════════════════════════════
+    (function buildHeroStats() {
+        const container = document.getElementById('heroStats');
+        if (!container || typeof HERO_STATS === 'undefined') return;
+        container.innerHTML = HERO_STATS.map(s => `
+            <div class="hero__stat">
+                <div class="hero__stat-val" data-count="${s.count}">0</div>
+                <div class="hero__stat-lbl">${esc(s.label)}</div>
+            </div>
+        `).join('');
+    })();
+
+    // ══════════════════════════════════════════════
+    // BUILD: Research Cards
+    // ══════════════════════════════════════════════
+    (function buildResearch() {
+        const container = document.getElementById('researchCards');
+        if (!container || typeof RESEARCH === 'undefined') return;
+        container.innerHTML = RESEARCH.map(r => `
+            <div class="rcard anim">
+                <div class="rcard__icon rcard__icon--${r.color}"><i class="fas ${r.icon}"></i></div>
+                <h3 class="rcard__title">${esc(r.title)}</h3>
+                <p class="rcard__text">${esc(r.text)}</p>
+                <div class="rcard__keywords">
+                    ${r.keywords.map(k => `<span class="rcard__kw">${esc(k)}</span>`).join('')}
+                </div>
+            </div>
+        `).join('');
+    })();
+
+    // ══════════════════════════════════════════════
+    // BUILD: Group Leader
+    // ══════════════════════════════════════════════
+    (function buildLeader() {
+        const container = document.getElementById('leaderContent');
+        if (!container || typeof LEADER === 'undefined') return;
+
+        const photoInner = LEADER.photo
+            ? `<img src="${esc(LEADER.photo)}" alt="${esc(LEADER.name)}">`
+            : `<i class="fas fa-user"></i><span>Photo placeholder</span>`;
+
+        const bioHTML = LEADER.bio.map(p => `<p class="leader-info__bio">${esc(p)}</p>`).join('');
+
+        const extraHTML = LEADER.extraInfo
+            ? `<div class="leader-info__placeholder"><i class="fas fa-pen" style="margin-right:0.4rem;"></i>${esc(LEADER.extraInfo)}</div>`
+            : '';
+
+        const linkIcons = {
+            scholar: { icon: 'fas fa-graduation-cap', label: 'Google Scholar' },
+            orcid: { icon: 'fab fa-orcid', label: 'ORCID' },
+            researchgate: { icon: 'fab fa-researchgate', label: 'ResearchGate' },
+            email: { icon: 'fas fa-envelope', label: 'Email' },
+            university: { icon: 'fas fa-university', label: 'University Profile' },
+        };
+
+        const linksHTML = Object.entries(LEADER.links).map(([key, url]) => {
+            const info = linkIcons[key];
+            if (!info) return '';
+            return `<a href="${esc(url)}" class="leader-link" title="${info.label}"><i class="${info.icon}"></i></a>`;
+        }).join('');
+
+        container.innerHTML = `
+            <div class="leader-photo anim anim--left" style="position:relative;">
+                <div class="leader-photo__frame">${photoInner}</div>
+                <div class="leader-photo__accent"></div>
+            </div>
+            <div class="anim anim--right">
+                <div class="leader-info__name">${esc(LEADER.name)}</div>
+                <div class="leader-info__title">${esc(LEADER.title)}</div>
+                <div class="leader-info__aff">${esc(LEADER.affiliation)}</div>
+                ${bioHTML}
+                ${extraHTML}
+                <div class="leader-links">${linksHTML}</div>
+            </div>
+        `;
+    })();
+
+    // ══════════════════════════════════════════════
+    // BUILD: Team Members
+    // ══════════════════════════════════════════════
+    (function buildTeam() {
+        const container = document.getElementById('teamSections');
+        if (!container || typeof TEAM === 'undefined') return;
+
+        container.innerHTML = TEAM.map(group => {
+            if (group.members.length === 0) {
+                return `
+                    <div class="team-section anim">
+                        <div class="team-row-label"><i class="fas fa-circle"></i> ${esc(group.category)}</div>
+                        <div class="team-placeholder">
+                            <i class="fas fa-user-friends"></i>
+                            ${esc(group.category)} information will be added here
+                        </div>
+                    </div>
+                `;
+            }
+
+            const cards = group.members.map(m => {
+                const avatarInner = m.photo
+                    ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}">`
+                    : `<i class="fas fa-user"></i>`;
+                return `
+                    <div class="tcard anim">
+                        <div class="tcard__avatar">${avatarInner}</div>
+                        <div class="tcard__name">${esc(m.name)}</div>
+                        <div class="tcard__role">${esc(m.role)}</div>
+                        <a href="mailto:${esc(m.email)}" class="tcard__email">${esc(m.email)}</a>
+                    </div>
+                `;
+            }).join('');
+
+            return `
+                <div class="team-section anim">
+                    <div class="team-row-label"><i class="fas fa-circle"></i> ${esc(group.category)}</div>
+                    <div class="team-grid stagger">${cards}</div>
+                </div>
+            `;
+        }).join('');
+    })();
+
+    // ══════════════════════════════════════════════
+    // BUILD: Publications
+    // ══════════════════════════════════════════════
+    (function buildPublications() {
+        const container = document.getElementById('pubList');
+        if (!container || typeof PUBLICATIONS === 'undefined') return;
+
+        container.innerHTML = PUBLICATIONS.map((p, i) => {
+            const num = String(i + 1).padStart(2, '0');
+            const titleHTML = p.link
+                ? `<a href="${esc(p.link)}" target="_blank" style="color:inherit;text-decoration:none;"><div class="pub-title">${esc(p.title)}</div></a>`
+                : `<div class="pub-title">${esc(p.title)}</div>`;
+            const linkClass = p.link ? ' pub-item--link' : '';
+            const wrapper = p.link
+                ? `<div class="pub-item anim${linkClass}" onclick="window.open('${esc(p.link)}','_blank')" style="cursor:pointer;">`
+                : `<div class="pub-item anim">`;
+
+            return `
+                ${wrapper}
+                    <div class="pub-num">${num}</div>
+                    <div>
+                        ${titleHTML}
+                        <div class="pub-meta">${esc(p.authors)} — <span class="pub-journal">${esc(p.journal)}</span>, ${esc(p.year)}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    })();
+
+    // ══════════════════════════════════════════════
+    // BUILD: Contact Section
+    // ══════════════════════════════════════════════
+    (function buildContact() {
+        const container = document.getElementById('contactContent');
+        if (!container || typeof CONTACT === 'undefined') return;
+
+        const addressHTML = CONTACT.address.map(line => esc(line)).join('<br>');
+
+        container.innerHTML = `
+            <div class="contact-block anim anim--left">
+                <div class="c-row">
+                    <div class="c-row__icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <div class="c-row__label">Address</div>
+                        <div class="c-row__value">${addressHTML}</div>
+                    </div>
+                </div>
+                <div class="c-row">
+                    <div class="c-row__icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <div class="c-row__label">Email</div>
+                        <div class="c-row__value"><a href="mailto:${esc(CONTACT.email)}">${esc(CONTACT.email)}</a></div>
+                    </div>
+                </div>
+                <div class="c-row">
+                    <div class="c-row__icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <div class="c-row__label">Phone</div>
+                        <div class="c-row__value">${esc(CONTACT.phone)}</div>
+                    </div>
+                </div>
+                <div class="c-row">
+                    <div class="c-row__icon"><i class="fas fa-globe"></i></div>
+                    <div>
+                        <div class="c-row__label">University</div>
+                        <div class="c-row__value"><a href="${esc(CONTACT.website)}" target="_blank">${esc(CONTACT.website).replace('https://', '')}</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-map-wrap anim anim--right">
+                <iframe src="${esc(CONTACT.mapEmbedUrl)}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        `;
+    })();
+
+    // ══════════════════════════════════════════════
+    // BUILD: Footer Links (from LEADER.links)
+    // ══════════════════════════════════════════════
+    (function buildFooterLinks() {
+        const container = document.getElementById('footerLinks');
+        if (!container || typeof LEADER === 'undefined') return;
+        const footerIcons = {
+            scholar: 'fas fa-graduation-cap',
+            researchgate: 'fab fa-researchgate',
+            email: 'fas fa-envelope',
+        };
+        container.innerHTML = Object.entries(footerIcons).map(([key, icon]) => {
+            const url = LEADER.links[key] || '#';
+            return `<a href="${esc(url)}" title="${key}"><i class="${icon}"></i></a>`;
+        }).join('');
+    })();
+
+    // ══════════════════════════════════════════════
+    // BEHAVIOUR: Nav scroll + active link
+    // ══════════════════════════════════════════════
     const nav = document.getElementById('mainNav');
     const navLinks = document.querySelectorAll('.nav__links a');
     const sections = document.querySelectorAll('.layer[id]');
@@ -758,7 +780,9 @@
     });
     navLinks.forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
 
-    // Scroll reveal
+    // ══════════════════════════════════════════════
+    // BEHAVIOUR: Scroll reveal animations
+    // ══════════════════════════════════════════════
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) { entry.target.classList.add('in-view'); observer.unobserve(entry.target); }
@@ -766,7 +790,9 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.anim').forEach(el => observer.observe(el));
 
-    // Counter animation
+    // ══════════════════════════════════════════════
+    // BEHAVIOUR: Counter animation
+    // ══════════════════════════════════════════════
     const counterObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -780,7 +806,9 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('[data-count]').forEach(c => counterObs.observe(c));
 
-    // Ising lattice canvas
+    // ══════════════════════════════════════════════
+    // BEHAVIOUR: Ising lattice canvas
+    // ══════════════════════════════════════════════
     const canvas = document.getElementById('latticeCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -836,6 +864,7 @@
         window.addEventListener('resize', resize);
         draw();
     }
+
 })();
 </script>
 </body>
