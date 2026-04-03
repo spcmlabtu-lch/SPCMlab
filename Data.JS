@@ -137,7 +137,7 @@ const TEAM = [
     {
         category: "M.Sc. Project Students",
         members: [
-            { name: "[M.Sc. Student 1]", role: "M.Sc. Project Student", email: "email@tezu.ac.in", photo: "" },
+            { name: "[Lohit Ch Hazarika]", role: "M.Sc. Project Student", email: "phi21018@tezu.ac.in", photo: "lohit.jpg" },
             { name: "[M.Sc. Student 2]", role: "M.Sc. Project Student", email: "email@tezu.ac.in", photo: "" },
             { name: "[M.Sc. Student 3]", role: "M.Sc. Project Student", email: "email@tezu.ac.in", photo: "" },
         ],
