@@ -107,11 +107,11 @@ const LEADER = {
     ],
     extraInfo: "Detailed biography, educational background, research experience, awards and recognitions, teaching interests — to be added here.",
     links: {
-        scholar:    "#",  // Google Scholar URL
-        orcid:      "#",  // ORCID URL
-        researchgate: "#",  // ResearchGate URL
-        email:      "#",  // mailto:email@tezu.ernet.in
-        university: "#",  // University profile URL
+        scholar:    "https://scholar.google.com/citations?user=E9ZBgOwAAAAJ&hl=en",  // Google Scholar URL
+        orcid:      "https://orcid.org/0000-0002-3864-9185",  // ORCID URL
+        researchgate: "https://www.researchgate.net/profile/Diana-Thongjaomayum-2",  // ResearchGate URL
+        email:      "dianat@tezu.ernet.in",  // mailto:email@tezu.ernet.in
+        university: "http://www.tezu.ernet.in/dphy/home/profiles/diana_profile.php",  // University profile URL
     },
 };
 
@@ -128,7 +128,7 @@ const TEAM = [
     {
         category: "PhD Scholars",
         members: [
-            { name: "[PhD Scholar 1]", role: "PhD Student", email: "email@tezu.ac.in", photo: "" },
+            { name: "Anjan Daimari", role: "PhD Student", email: "email@tezu.ac.in", photo: "" },
             { name: "[PhD Scholar 2]", role: "PhD Student", email: "email@tezu.ac.in", photo: "" },
             // Add more PhD scholars:
             // { name: "New Student Name", role: "PhD Student", email: "their@tezu.ac.in", photo: "" },
@@ -137,9 +137,9 @@ const TEAM = [
     {
         category: "M.Sc. Project Students",
         members: [
-            { name: "[Lohit Ch Hazarika]", role: "M.Sc. Project Student", email: "phi21018@tezu.ac.in", photo: "lohit.jpg" },
-            { name: "[M.Sc. Student 2]", role: "M.Sc. Project Student", email: "email@tezu.ac.in", photo: "" },
-            { name: "[M.Sc. Student 3]", role: "M.Sc. Project Student", email: "email@tezu.ac.in", photo: "" },
+            { name: "Lohit Ch Hazarika", role: "M.Sc. Project Student", email: "phi21018@tezu.ac.in", photo: "lohit.jpg" },
+            { name: "Juman Hazarika", role: "M.Sc. Project Student", email: "email@tezu.ac.in", photo: "" },
+            { name: "Bhaswati Nandi", role: "M.Sc. Project Student", email: "email@tezu.ac.in", photo: "" },
         ],
     },
     {
