@@ -110,7 +110,7 @@ const LEADER = {
         scholar:    "https://scholar.google.com/citations?user=E9ZBgOwAAAAJ&hl=en",  // Google Scholar URL
         orcid:      "https://orcid.org/0000-0002-3864-9185",  // ORCID URL
         researchgate: "https://www.researchgate.net/profile/Diana-Thongjaomayum-2",  // ResearchGate URL
-        email:      "dianat@tezu.ernet.in",  // mailto:email@tezu.ernet.in
+        email:      "mailto:dianat@tezu.ernet.in",  // mailto:email@tezu.ernet.in
         university: "http://www.tezu.ernet.in/dphy/home/profiles/diana_profile.php",  // University profile URL
     },
 };
